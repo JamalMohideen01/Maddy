@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Graph Explorer: Eulerian & Hamiltonian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Graph Explorer</h1>
+    <nav>
+      <button id="newGraphBtn" title="Start a new empty graph">New</button>
+      <button id="randomGraphBtn" title="Generate a random graph">Random</button>
+      <button id="gridGraphBtn" title="Grid example">Grid</button>
+      <button id="k5GraphBtn" title="Complete K5 example">K5</button>
+      <button id="k33GraphBtn" title="Bipartite K3,3 example">K3,3</button>
+      <button id="treeGraphBtn" title="Tree example">Tree</button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <section class="canvas-panel">
+      <canvas id="graphCanvas" width="1024" height="640"></canvas>
+      <div class="toolbar">
+        <label><input type="radio" name="tool" value="move" checked> Move</label>
+        <label><input type="radio" name="tool" value="add-node"> Add Node</label>
+        <label><input type="radio" name="tool" value="add-edge"> Add Edge</label>
+        <label><input type="radio" name="tool" value="delete"> Delete</label>
+        <label><input type="checkbox" id="directedToggle"> Directed</label>
+        <label><input type="checkbox" id="weightedToggle"> Weighted</label>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <section class="analysis">
+        <h2>Analysis</h2>
+        <div class="analysis-row"><span>Vertices</span><output id="vertexCount">0</output></div>
+        <div class="analysis-row"><span>Edges</span><output id="edgeCount">0</output></div>
+        <div class="analysis-row"><span>Connected</span><output id="connected">-</output></div>
+        <div class="analysis-row"><span>Eulerian</span><output id="eulerian">-</output></div>
+        <div class="analysis-row"><span>Hamiltonian</span><output id="hamiltonian">-</output></div>
+      </section>
+
+      <section class="actions">
+        <h2>Find Paths</h2>
+        <div class="action-row">
+          <button id="findEulerTrailBtn">Euler Trail/Circuit</button>
+          <button id="findHamiltonPathBtn">Hamilton Path</button>
+          <button id="findHamiltonCycleBtn">Hamilton Cycle</button>
+        </div>
+      </section>
+
+      <section class="io">
+        <h2>Import/Export</h2>
+        <div class="action-row">
+          <button id="exportBtn">Export JSON</button>
+          <input type="file" id="importInput" accept="application/json" />
+        </div>
+        <textarea id="exportArea" readonly placeholder="Graph JSON will appear here"></textarea>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="app-footer">
+    <span>Built for exploring Eulerian and Hamiltonian properties.</span>
+    <a href="https://en.wikipedia.org/wiki/Eulerian_path" target="_blank" rel="noreferrer">Eulerian path</a>
+    <span> • </span>
+    <a href="https://en.wikipedia.org/wiki/Hamiltonian_path" target="_blank" rel="noreferrer">Hamiltonian path</a>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
